@@ -1,0 +1,9 @@
+[submodule "workflow"]
+	path = workflow
+	url = git@github.com:AsunaU2/workflow.git
+[submodule "wfrest"]
+	path = wfrest
+	url = git@github.com:AsunaU2/wfrest.git
+[submodule "workflow-doc"]
+	path = workflow-doc
+	url = https://github.com/James-Moriarty/workflow-doc.git
