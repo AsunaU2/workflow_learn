@@ -1,9 +1,0 @@
-[submodule "workflow"]
-	path = workflow
-	url = https://github.com/sogou/workflow.git
-[submodule "workflow-doc"]
-	path = workflow-doc
-	url = https://github.com/James-Moriarty/workflow-doc.git
-[submodule "wfrest"]
-	path = wfrest
-	url = https://github.com/wfrest/wfrest.git
