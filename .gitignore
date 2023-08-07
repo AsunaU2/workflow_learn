@@ -137,3 +137,4 @@ fabric.properties
 
 # project dir
 bin/
+build/
