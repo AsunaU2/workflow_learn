@@ -8,25 +8,31 @@ list(APPEND CMAKE_INSTALL_RPATH "$ORIGIN/../../workflow/_lib")
 set(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 
-add_executable(${PROJECT_NAME}
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp
-        )
+set(LEARN_LIST
+        http_request
+        http_request_timer_delay
+)
 
-target_include_directories(${PROJECT_NAME} PRIVATE
+set(LEARN_LIB
+        dl
+        pthread
+        ssl
+        crypto
+        workflow
+)
+
+set(LEARN_INCLUDE_LIST
         ${CMAKE_CURRENT_SOURCE_DIR}
         ${CMAKE_CURRENT_SOURCE_DIR}/src
         ${CMAKE_CURRENT_SOURCE_DIR}/include
         ${CMAKE_CURRENT_SOURCE_DIR}/../workflow/_include
 )
 
-target_link_directories(${PROJECT_NAME} PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}/../workflow/_lib
-)
+link_directories(${CMAKE_CURRENT_SOURCE_DIR}/../workflow/_lib)
 
-target_link_libraries(${PROJECT_NAME} PRIVATE
-        -ldl
-        -lpthread
-        -lssl
-        -lcrypto
-        -lworkflow
-)
+foreach(src ${LEARN_LIST})
+	add_executable(${src} ${CMAKE_CURRENT_SOURCE_DIR}/src/${src}.cpp)
+        target_include_directories(${src} PRIVATE ${LEARN_INCLUDE_LIST})
+	target_link_libraries(${src} PUBLIC ${LEARN_LIB})
+endforeach()
+
