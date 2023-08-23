@@ -11,6 +11,8 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 set(LEARN_LIST
         http_request
         http_request_timer_delay
+		http_server_timer_delay
+		forwarder_server
 )
 
 set(LEARN_LIB
