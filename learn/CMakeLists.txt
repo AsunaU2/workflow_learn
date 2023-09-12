@@ -11,9 +11,10 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 set(LEARN_LIST
         http_request
         http_request_timer_delay
-		http_server_timer_delay
-		forwarder_server
-)
+        http_server_timer_delay
+        forwarder_server
+        wget
+        )
 
 set(LEARN_LIB
         dl
@@ -21,20 +22,20 @@ set(LEARN_LIB
         ssl
         crypto
         workflow
-)
+        )
 
 set(LEARN_INCLUDE_LIST
         ${CMAKE_CURRENT_SOURCE_DIR}
         ${CMAKE_CURRENT_SOURCE_DIR}/src
         ${CMAKE_CURRENT_SOURCE_DIR}/include
         ${CMAKE_CURRENT_SOURCE_DIR}/../workflow/_include
-)
+        )
 
 link_directories(${CMAKE_CURRENT_SOURCE_DIR}/../workflow/_lib)
 
-foreach(src ${LEARN_LIST})
-	add_executable(${src} ${CMAKE_CURRENT_SOURCE_DIR}/src/${src}.cpp)
-        target_include_directories(${src} PRIVATE ${LEARN_INCLUDE_LIST})
-	target_link_libraries(${src} PUBLIC ${LEARN_LIB})
-endforeach()
+foreach (src ${LEARN_LIST})
+    add_executable(${src} ${CMAKE_CURRENT_SOURCE_DIR}/src/${src}.cpp)
+    target_include_directories(${src} PRIVATE ${LEARN_INCLUDE_LIST})
+    target_link_libraries(${src} PUBLIC ${LEARN_LIB})
+endforeach ()
 
